@@ -35,7 +35,7 @@
 \usepackage{../allpack}
 \usepackage[a4paper,hmargin={2cm,2cm},twoside,includehead=true,headsep=2mm,tmargin=2cm,bmargin=2cm,headheight=15pt]{geometry}
 
-
+\bibliography{ve_bib}
 
 \title{Théorie des valeurs extrêmes \\N. Kazi-Tani \\
 M2 PSA\\
@@ -55,6 +55,17 @@ Semestre S9}
 \section*{Introduction}
 L'un des buts de la théorie des valeurs extrêmes est d'extrapoler une probabilité de survie à partir des données collectées (par exemple les sinistres et leurs coûts pour les assurances/réassurances).
 
-On peut par exemple s'intéresser à une suite de variables aléatoires indépendantes et identiquement distribuées $(X_k)_{k\geq 1}$ et se poser la question de la loi suivie par la suite $(M_n = \max{X_k, 1 \leq k \leq n})_{n\geq 1}$ pour $n$ assez grand.
+On peut par exemple s'intéresser à une suite de variables aléatoires indépendantes et identiquement distribuées $(X_k)_{k\geq 1}$ et se poser la question de la loi suivie par la suite $(M_n = \max\{X_k, 1 \leq k \leq n\})_{n\geq 1}$ pour $n$ assez grand.
+
+On peut par exemple se poser les questions suivantes:\
+\begin{enumerate}
+	\item Quelle est la vitesse minimale d'un 100 mètres?
+	\item Quelle est l'estimation des sinistres extrêmes en assurance ou en réassurance?
+	\item Quels sont les mouvements extrêmes des prix des actifs sur un marché financier?
+	\item \`A quelle hauteur doit-on placer des digues pour contrer des inondations décennale, centennale...?
+	\item Quel estimation des temps de services d'un réseau télécom?
+\end{enumerate}
+Toutes ces questions peuvent se traiter comme l'étude de queues de distributions, ce qui fait intervenir la théorie des valeurs extrêmes.
+
 
 \end{document}
