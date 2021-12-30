@@ -80,5 +80,9 @@ Commençons donc par introduire la notion de stabilité pour une somme.
 \begin{de}[stabilité pour la somme]
 	Une variable aléatoire $X$ (resp. une mesure de probabilité) est dite \textit{stable pour la somme} si pour tout couple $(c_1,c_2)\in\R^2$ et toutes copies $X_1,X_2$ iid de $X$, il existe $a(c_1,c_2)>0$ et $b(c_1,c_2) \in \R$, tels que 
 	$$ P_{c_1 X_1 + c_2 X_2} = P_{a(c_1,c_2)X+ b(c_1,c_2)}.$$
+	En particulier, si $X$ est stable pour la somme et si $X_1,\cdots,X_n$ est une suite iid de même loi que $X$, alors en posant $S_n = \sum_{1\leq k \leq n} X_k$ il existe $a_n >0$ et $b_n \in\R$ tels que
+	$$ P_{S_n}= P_{a_n X +b_n}$$
+	et par renormalisation
+	$$ P_{\frac{S_n -b_n}{a_n}}=P_X.$$
 \end{de}
 \end{document}
