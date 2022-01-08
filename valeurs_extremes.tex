@@ -286,5 +286,17 @@ On introduit maintenant comme dans le chapitre précédent, la notion de domaine
 On donne une proposition sur le comportement de la fonction de survie.
 \begin{prop}[Leadbetter, Lindgren, Rootzén]\label{LLR}
 	Il existe une suite $(u_n)_n$ tel que $ n \overline{F}(u_n) \underset{n\to \infty}{\longrightarrow} \tau$ si et seulement si $ \lim_{x \to x_F} \frac{\overline{F}(x)}{\overline{F}(x^- )}=1.$
+\end{prop}
+\begin{rem}
+	La loi de Poisson ne vérifie pas cette propriété.
+\end{rem}
+
+On introduit maintenant une loi de probabilité qui permet de généraliser le triptyque Fréchet, Weibull, Gumbel.
+\begin{de}[loi des valeurs extrêmes généralisées]
+	On définit la \textit{loi des valeurs extrêmes généréalisée} comme 
+	$$ H_\gamma (x)= \left\{ \begin{array}{ll} \exp(-(1+\gamma x ) ^{-\tfrac{1}{\gamma}}) &, \text{ si } \gamma \neq 0\\
+		e^{-e^{-x}} &,\text{ si }\gamma = 0	\end{array}.$$
+	si $1+  \gamma x > 0.$
+	\end{de}
 
 \end{document}
