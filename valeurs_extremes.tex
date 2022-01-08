@@ -345,6 +345,15 @@ En particulier $F(x)= 1 -\frac{1}{x^\alpha}$ et $q_F (u)= \frac{1}{(1-u)^\tfrac{
 $$ a_n = n^{-\tfrac{1}{\alpha}}.$$
 \end{rem}
 \begin{proof}
-	Pour la condition nécessaire voir \cite[pp 55-57]{Resnick_1987}
+	Pour la condition nécessaire voir \cite[pp 55-57]{Resnick_1987} .
+	
+	On remarque que si 
+	$$ \overline{F}(a_n) = 1 - F (F^{-1} (1-\tfrac1n )) \sim_{n\to \infty} \frac{1}{n}.$$
+	Pour $x>0$, 
+	\begin{align*}
+		n \overline{F}(a_n x) = & n \frac{\overline{F}(a_n x )}{\overline{F}(a_n)}\overline{F}(a_n)\\
+		\sim_{n\to \infty} & \frac{\overline{F}(a_n x )}{\overline{F}(a_n)}\\
+		\underset{n\to\infty}{\longrightarrow}  & x^{-\alpha}.
+	\end{align*}
 \end{proof}
 \end{document}
