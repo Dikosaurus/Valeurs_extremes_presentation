@@ -95,5 +95,137 @@ Commençons donc par introduire la notion de stabilité pour une somme.
 \begin{prop}
 	Les lois stables pour la somme sont les seules limites possible en cas de convergence de $S_n$ (renormalisée).
 \end{prop}
+On obtient le théorème de la limite centrée généralisée.
+\begin{thm}
+	Soit $(X_k)_{k\geq 1}$ une suite de variables iid. S'il existe $a_n > 0$ et $b_n \in\R$ tels que
+	$$ \frac{S_n - b_n}{a_n} \cvloi Z$$
+	où $Z$ est non dégénérée, alors $Z$ est une loi stable pour la somme et on a pour tout $t\in \R$,
+	$$ \Phi_Z (t)= E \left(e^{i \ps{t,Z}}\right)= \exp\left( it \gamma -c\vabs{t}^\alpha (1 +i \beta \mathrm{sgn}(t)z (\alpha,t))\right),$$
+	où:\
+	\begin{enumerate}
+		\item $z(\alpha,t) = \tan\left(\frac{\pi \alpha}{1}\right) \indic_{\alpha=1}  - \frac{2}{\pi} \log\vabs{t}\indic_{\alpha=1}$;
+		\item $\gamma\in \R$ (ce qui correspond à la moyenne);
+		\item $c>0$ (correspondant à l'oscillation);
+		\item $\alpha \in ]0,2[$ (gère la queue de distribution ainsi que le coefficient de normalisation);
+		\item $\beta \in [-1,1]$ (correspondant à la symétrie de la loi);
+		\item $\mathrm{sgn}$ est la fonction signe ie $\mathrm{sgn}(t)= \indic_{t>0} (t) - \indic_{t<0}(t).$
+		\item $a_n \varpropto n^{\tfrac{1}{\alpha}}.$ 
+	\end{enumerate}
+\end{thm}
+\begin{rem}\
+	\begin{enumerate}
+		\item Le cas $\alpha= 2$ correspond à $\Phi_Z (t)= \exp(it\gamma - \tfrac12 t^2 (2c))$ et donc $P_Z = \mathcal N (\gamma, 2c)$;
+		\item Le cas $\alpha= 1$ correspond à la loi de Cauchy;
+		\item On dit que ces lois sont $\alpha$-stables;
+		\item Si $Z$ est $\alpha$-stable et $E(Z^2)<+\infty $ ssi $\alpha=2$.
+	\end{enumerate}
+\end{rem}
+On introduit maintenant la notion de domaine d'attrication.
+\begin{de}[domaine d'attraction pour les lois $\alpha$-stables]
+	On dit qu'une variable aléatoire $X$ de loi $F$ (ici $F$ désigne sa fonction de répartition) \textit{appartient au domaine d'attraction} d'une distribution $\alpha$-stable $G_\alpha$ (encore une fois une fonction de répartition) s'il existe deux suites $(a_n)_{n\geq 1} \in (\R^+)^\N$ et $(b_n)_{n\geq 1}\in\R^\N$ telles que 
+	$$ \frac{X_1+X_2 +\cdots + X_n -b_n}{a_n} \cvloi G_\alpha,$$
+	 où $X_1,\cdots,X_n$ iid de loi $X$. \\
+	 Dans ces conditions, on écrira $F \in \mathrm{DA}_{\Sigma} (G_\alpha)$ (ou encore $X\in\mathrm{DA}_{\Sigma}(G_\alpha)$).
+ \end{de}
+\begin{rem}
+	Toute variable aléatoire $X$ avec $E(X^2)<\infty$ vérifie $X\in\mathrm{DA}_{\Sigma}(G_2)$ (c'est le théorème usuel de la limite centrée).
+\end{rem}
+On introduit la notion de fonction à variation lente.
+\begin{de}
+	Une fonction $L : \R \to \R$ est à \textit{variation lente} sur un voisinage de $+\infty$ si
+	$$ \lim_{x\to\infty} \frac{L(ax)}{L(x)}=1 , \forall a >0.$$
+	
+\end{de}
+\begin{ex}
+	La fonction $\log$ est à variation lente.
+\end{ex}
+On peut alors caractériser les domaines d'attraction pour la somme.
+\begin{prop}\
+	\begin{enumerate}
+		\item $F \in \mathrm{DA}_{\Sigma} (G_2)$ ssi 
+		$$ \lim_{x \to \infty} \frac{x^2 \int_{[-x,x]^c} d\mathrm d F(y)}{\int_{[-x,x]^c} y^2\mathrm d F(y)=}0.$$
+		\item $F \in \mathrm{DA}_{\Sigma}(G_\alpha)$, $0 < \alpha <2$, ssi 
+		$$ F(-x) =\frac{c_1+o(1)}{x^\alpha} L(x),\text{ quand} x\to \infty$$
+		et 
+		$$ \overline{F}(x)= \frac{c_2+o(1)}{x^\alpha} L(x)$$
+		où $\overline{F}=1-F$, $L$ est à variation lente et $c_1,c2\geq 0, c_1+ c_2 >0.$
+	\end{enumerate}
+\end{prop}
+\chapter{Comportement asymptotique du maximum}
+Dans toute la suite $(X_k)_{k \geq 1}$ désigne une suite de va iid de loi $G$ et on définit
+$$ M_n = \max(X_1,\cdots,X_n), n\geq 1.$$
+Comme dans le chapitre précédent, on se pose les deux questions suivantes:\
+\begin{enumerate}
+	\item S'il existe deux suites $(a_n),(b_n) $ telles que $ \frac{M_n - b_n}{a_n}\cvloi H$, comment peut-on caractériser $H$?
+	\item Comment calculer $a_n$ et $b_n$?
+\end{enumerate}
+On notera par $x_F$ le réel définit par 
+$$ x_F = \sup\{a \in \R;\,F(x)<1\}.$$
+On a la première proposition concernant la suite $(M_n)$. 
+\begin{prop}
+	Il y a convergence presque sûre de la suite $(M_n)_{n\geq 1}$ vers le réel $x_F$.
+\end{prop}
+\begin{proof}
+	On sait que pour tout $x \ in\R$,
+	$$ P(M_n \leq x) = F^n (x)$$
+	et ce par indépendance, donc 
+	$$ \lim_{n \to + \infty} P(M_n \leq x )= \left\{ \begin{array}{ll} 0 & \text{si } F(x)<1\\1 & \text{si }F(x) =1
+	\end{array}\right.$$
+Ainsi $M_n \cvloi G$ ou $G(x)= \indic_{x\geq x_F} (x)$. Par conséquent $M_n \cvloi x_F$ donc $M_n \cvP x_F$ et puisque la suite $(M_n)$ est presque sûrement croissante (ie. $M_n \leq M_{n+1}$ ps) alors $M_n \cvps x_F.$
+\end{proof}
+
+On chercher $H$ tel que $ \frac{M_n - b_n}{a_n} \cvloi H$ et donc en tout point de continuité de $H$ on a 
+$$ \lim_{n\to \infty} P\left(\frac{M_n -b_n}{a_n}\right)=H(x)$$
+ce qui est équivalent à 
+$$ \lim_{n\to \infty} P(M_n \leq a_n x +b_n) = H(x).$$
+On peut alors se poser la question de la convergence de $P(M_n \leq a_n)$ vers $K \in [0,1]$ et plus particulièrement quand $0 < K < 1.$ Pour ce faire on a le lemme d'approximation de Poisson.
+\begin{lemme}[lemme d'approximation de Poisson]
+Soit $\tau \in [0,\infty]$ et soit $(u_n)_{n\geq 1}$ une suite de réels. Alors il y a équivalence entre:\
+\begin{enumerate}
+	\item $ \lim_{n\to\infty} n \overline{F}(u_n) = \tau$;
+	\item $\lim_{n \to \infty} P(M_n \leq u_n) = e^{-\tau}.$
+\end{enumerate}
+\end{lemme}
+\begin{proof}
+	La preuve se fait en scindant les cas entre $\tau < \infty$ et $\tau=\infty.$ Supposons que $\tau < \infty$ pour commencer. \\
+	On a 
+	\begin{align*}
+		P(M_n \leq u_n) = & F(u_n)^n\\
+		=& (1-\overline{F}(u_n))^n \\
+		= & \left(1- \frac{n\overline{F}(u_n)}{n}\right) \to e^{-\tau}
+	\end{align*}
+Réciproquement, on commence par montrer que $\overline{F}(u_n) \to 0$. Supposons qu'il existe une sous-suite $(u_{n_k})$ de $(u_n)$ telle que $(F(u_{n_k}))$ ne converge pas vers $0$. Alors,
+$$ P(M_{n_k} \leq u_{n_k}) =\left(1 - \overline{F}(u_{n_k})\right)^{n_k}\to 0 $$
+ce qui est une contraction avec $2)$. Ainsi $\overline{F}(u_n) \to 0$. \\
+De plus en prenant le logarithme dans 2), on a que $n \log F(u_n) = n \log(1-\overline{F}(u_n)) \to -\tau$ et en utilisant que $\log(1-x) \sim_0 -x$, on a le résultat.\\
+Le cas $\tau=\infty$ est laissé en exercice.
+
+\end{proof}
+\begin{prop}[CTT, Convergence to Type Theorem]\label{CTT}
+	Soient $Z , \tilde Z , (Y_n)_{n\geq 1}$ des va non dégénérées et soient $(a_n), (\tilde{a_n}),(b_n),(\tilde{b_n})$ des suites telles que 
+	$$ \frac{Y_n -b_n}{a_n} \cvloi Z \text{ et } \frac{Y_n-\tilde{b_n}}{\tilde{a_n}} \cvloi \tilde Z.$$
+	Alors il existe $a > 0$ et $b \in \R$ tels que 
+	$$ \lim_{n\to\infty}\frac{a_n}{\tilde{a_n}} =a \text{ et } \lim_{n\to\infty} \tilde{b_n} - b_n = b$$
+	 et 
+	 $$P_{Z}= P_{a \tilde Z + b}$$
+	et donc $Z $ et $\tilde Z $ sont de même type.
+\end{prop}
+De la même manière que l'on a définit la loi stables pour la somme, on peut définir les lois stables pour le maximum.
+\begin{de}[lois max-stables]
+	Une va $X$ est dite \textit{max-stable} si pour tout $n \geq 1$, il existe $a_n >0$ et $b_n \in \R$ tels que 
+	$$P_{\max(X_1,\cdots,X_n)} =P_{a_n X +b}$$
+	où $X_i$ désigne une copie iid de $X$.
+\end{de}
+\begin{thm}[Fischer-Tippet-Gnedenko]
+Soit $(X_n)_{n\geq 1}$ une suite de va iid réelles. S'il existe une suite $(a_n)_{n\geq 1}, a_n >0$ et une suite $(b_n)$ telles que 
+\begin{align} \frac{M_n - b_n}{a_n} \cvloi H  \label{FTC}
+\end{align}
+où $H$ est la fonction de répartition d'une distribution non dégénérée, alors $H$ est du type (à transformation linéaire près) d'une des distributions suivantes:\
+\begin{enumerate}
+	\item Fréchet: $\Phi_\alpha (x)= \exp(-x^{-\alpha}) \indic_{(x\geq 0)} (x)$, $\alpha >0$;
+	\item Weibull: $\Psi_\alpha (x) = \exp(-(-x)^\alpha) \indic_{(x<0)}(x) + \indic_{(x \geq 0)}(x)$, $\alpha \geq 0$;
+	\item Gumbel: $\Lambda(x)= \exp(-\exp(-x))$, $x\in \R$.
+\end{enumerate}
+\end{thm}	
 
 \end{document}
