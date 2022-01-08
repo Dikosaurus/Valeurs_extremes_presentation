@@ -249,5 +249,17 @@ Cette équation de Hamel n'a comme solution mesurable que les fonctions du type
 $$ t \mapsto \alpha(t)= e^{-\theta}, t \in \R, \theta\in\R$$
 On distingue les cas $\theta<0, \theta =0$ et $\theta >0$. \\
 Si $\theta =0$, alors $\alpha \equiv 1$ et $\beta(st)=\beta(t)\beta(s)$, par suite il existe $c \in\R$ tel que $\beta(t)=- c \log(t)$.
+
+On a obtient alors,
+$$ H(x)^t = H(x -c\log t )$$
+avec $c \neq 0$ car $H$ est non dégénérée. \\
+Supposons que $H(x_0)= 1 $ pour un certain $x_0 \in \R$, alors on a 
+ $$ H(x_0 - c\log(t))= 1 ,\forall t > 0$$
+ ce qui n'est pas possible car $H$ est non dégénérée. Par suite $H(x) < 1,\forall x \in \R$.\\
+ En prenant $x=0$ dans l'equation fonctionnelle de $H$, on obtient 
+ $$ H(0)^t = H(- c\log t)$$
+ et par changement de variable $u = - c\log t$, en prenant $p\in\R$ défini par $e^{-e ^p} =H(0)$, obtient au final
+ $$H(u)= \ęxp(-e^{-\tfrac{u}{c}-p}) =\Lambda(\frac{u}{c}-p).$$
+ Par suite la loi de $H$ est de même type que la loi de Gumbell.
 \end{proof}
 \end{document}
