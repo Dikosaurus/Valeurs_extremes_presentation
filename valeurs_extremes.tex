@@ -279,4 +279,12 @@ On introduit maintenant comme dans le chapitre précédent, la notion de domaine
 \begin{de}
 	Une loi de probabilité $F$ appartient au domaine d'attraction du maximum d'une loi de valeurs extrêmes $H$, que l'on note $ F \in \mathrm{MDA} (H)$, s'il existe $a_n >0$ et $b_n \in \R$ tels que 
 	$$ \frac{M_n -b_n}{a_n} \cvloi H .$$
+\end{de}
+\begin{rem}
+	Il est possible que l'on ne puisse pas trouver de normalisation telle que la loi $H$ ne soit pas dégénérée.
+\end{rem}
+On donne une proposition sur le comportement de la fonction de survie.
+\begin{prop}[Leadbetter, Lindgren, Rootzén]\label{LLR}
+	Il existe une suite $(u_n)_n$ tel que $ n \overline{F}(u_n) \underset{n\to \infty}{\longrightarrow} \tau$ si et seulement si $ \lim_{x \to x_F} \frac{\overline{F}(x)}{\overline{F}(x^- )}=1.$
+
 \end{document}
