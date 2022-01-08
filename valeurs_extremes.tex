@@ -271,6 +271,12 @@ Supposons que $H(x_0)= 1 $ pour un certain $x_0 \in \R$, alors on a
 	\begin{align*}
 		P(M_n \leq n ^{\tfrac{1}{\alpha}}) = & \Phi_\alpha (n^{-\tfrac{1}{\alpha}} x)^n \\
 		= & \exp(- (n^{-\tfrac{1}{\alpha}} x)^{-\alpha})
+		= & \Phi_\alpha(x).
 	\end{align*}
+Donc la loi de Fréchet est bien max-stable.
 \end{rem}
+On introduit maintenant comme dans le chapitre précédent, la notion de domaine d'attraction, mais cette fois pour le maximum.
+\begin{de}
+	Une loi de probabilité $F$ appartient au domaine d'attraction du maximum d'une loi de valeurs extrêmes $H$, que l'on note $ F \in \mathrm{MDA} (H)$, s'il existe $a_n >0$ et $b_n \in \R$ tels que 
+	$$ \frac{M_n -b_n}{a_n} \cvloi H .$$
 \end{document}
