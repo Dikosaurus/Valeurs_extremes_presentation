@@ -179,7 +179,7 @@ $$ \lim_{n\to \infty} P\left(\frac{M_n -b_n}{a_n}\right)=H(x)$$
 ce qui est équivalent à 
 $$ \lim_{n\to \infty} P(M_n \leq a_n x +b_n) = H(x).$$
 On peut alors se poser la question de la convergence de $P(M_n \leq a_n)$ vers $K \in [0,1]$ et plus particulièrement quand $0 < K < 1.$ Pour ce faire on a le lemme d'approximation de Poisson.
-\begin{lemme}[lemme d'approximation de Poisson]
+\begin{lemme}[lemme d'approximation de Poisson]\label{lemmepoisson}
 Soit $\tau \in [0,\infty]$ et soit $(u_n)_{n\geq 1}$ une suite de réels. Alors il y a équivalence entre:\
 \begin{enumerate}
 	\item $ \lim_{n\to\infty} n \overline{F}(u_n) = \tau$;
@@ -356,4 +356,12 @@ $$ a_n = n^{-\tfrac{1}{\alpha}}.$$
 		\underset{n\to\infty}{\longrightarrow}  & x^{-\alpha}.
 	\end{align*}
 \end{proof}
-\end{document}
+D'après le \autoref{lemmepoisson} on a alors 
+$$ P(M_n \leq a_n x ) \underset{n\to\infty}{\longrightarrow} \exp(-(x)^{-\alpha}) =\Phi_\alpha(x).$$
+Pour $x< 0$, on a 
+$$P (M_n \leq a_n x )= F(a_n x)^n$$
+or, $F(a_n x ) \leq F(0)$ et $F (0) \neq 0$ (car sinon $\overline{F} \notin \mathrm{RV}_{-\alpha}$), ainsi
+$$ F (a_n x ) < 1$$
+et donc 
+$$ \lim_{n\to\infty} P(M_n \leq a_n x ) = 0.$$
+
