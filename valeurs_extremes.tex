@@ -435,7 +435,13 @@ Les assertions suivantes sont équivalentes:\
 \section{Estimation de $\xi$}
 \begin{thm}
 	Soit $(X_1,\cdots,X_n)$ une suite de va iid de loi $F \in \mathrm{MDA}(H_\xi)$. Si $k:\N\to \N$ est une application croissante (avec $\lim_{n\to\infty} k(n)=+\infty$ évidemment) et si $\lim_{n\to\infty} \tfrac{k(n)}{n}=0$, alors l'estimateur de Pickands défini par 
-	$$ \widehat{\xi}_{k(n)} = \frac{1}{\log 2} \log\left(\frac{X_{(n-k(n)+1)} -X_{(n-2k(n)+1)}}{X_{(n-2k(n)+1)}- X_{n -4k(n)+1}}\right)$$
+	$$ \widehat{\xi}_{k(n)} = \frac{1}{\log 2} \log\left(\frac{X_{(n-k(n)+1)} -X_{(n-2k(n)+1)}}{X_{(n-2k(n)+1)}- X_{(n -4k(n)+1)}}\right)$$
 	converge en probabilité vers $\xi$.
 \end{thm}
+\begin{rem}\
+\begin{enumerate}
+	\item L'estimateur de Pickands est biaisé;
+	\item Si on supppose $\lim_{n\to \infty} \tfrac{k(n)}{\log \log (n)}=+\infty$, alors $\widehat{\xi}_{k(n)}\cvps \xi.$
+\end{enumerate}
+\end{rem}
 \end{document}
