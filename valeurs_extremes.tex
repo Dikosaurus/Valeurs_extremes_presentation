@@ -414,7 +414,18 @@ Par conséquent,
 	\begin{enumerate}
 		\item $F_u (x) =P( X- u \leq x / X>u), x \geq 0$;
 		\item $G_{\gamma, \nu,\beta}(x)= G_\gamma (\tfrac{x -\nu}{\beta}), x \in D(\gamma, \nu , \beta)$;
-		\item $G_{\gamma, 0 ,\beta}(x)= G_{\alpha,\beta}(x))= 1 - (1+ \tfrac{\gamma}{\beta}x)^{-\tfrac{1}{\gamma}}, x \in D (\gamma, \beta).$
+		\item $G_{\gamma, 0 ,\beta}(x)= G_{\alpha,\beta}(x)= 1 - (1+ \tfrac{\gamma}{\beta}x)^{-\tfrac{1}{\gamma}}, x \in D (\gamma, \beta).$
 	\end{enumerate}
 \end{nota}
+\begin{thm}[Gnedenko]
+Les assertions suivantes sont équivalentes:\
+\begin{enumerate}
+	\item $F \in \mathrm{MDA}(H_\gamma)$;
+	\item Il existe une fonction $u\mapsto \beta(u)$ mesurable strictement positive telle que 
+	$$ \lim_{u \to x_F} \sup_{x\in ]0,x_F - u[} \vabs{ F_u (x) -G_{\gamma,\beta(u)}(x)} =0.$$
+\end{enumerate}
+\end{thm}
+\begin{rem}
+	La loi de Pareto généralisée est la seule loi stable par troncature.
+\end{rem}
 \end{document}
