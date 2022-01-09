@@ -474,5 +474,29 @@ Par conséquent,
 $$ X_{k(n)} \cvloi x_p$$
 et puisque la limite $x_p$ est constante alors 
 $$ X_{k(n)} \cvP x_p .$$
+Pour montrer la convergence presque sûre, il faut montrer 
+$$ \vabs{F(X_{k(n)}) -F(x_p)} \cvps 0.$$
 \end{proof}
+\begin{thm}[théorème de la limite centrée pour les quantiles]
+	On suppose que $X$ a pour densité $f$, continue en $x_p$ avec $f(x_p)>0$. En supposant également que $k(n)= np+o(\sqrt{n})$, alors 
+	$$ \sqrt{n} \left(\frac{X_{k(n)}-x_p}{\sqrt{p(1-p)} f(x_p)}\right)\cvloi \mathcal N (0,1).$$
+\end{thm}
+\begin{rem}
+	Ce théorème permet de déterminer des intervalles de confiance pour les quantiles.
+\end{rem}
+\begin{lemme}
+	On a 
+	$$P_{(X_(1),\cdots, X_{(n)})} = P_(F^{-1}(U_{(1)}),\cdots,F^{-1}(U_{(n)}))$$
+	où $(U_{(1)},\cdots, U_{(n)})$ est une statistique d'ordre associée à $n$ variables aléatoires de loi uniforme sur $[0,1]$.
+\end{lemme}
+\begin{proof}[idée]
+	$P_{(X_1,\cdots, X_{n})} = P_(F^{-1}(U_{1}),\cdots,F^{-1}(U_{n}))$ et $F^{-1}$ est croissante.
+\end{proof}
+\begin{prop}
+	Le vecteur  $(U_{(1)},\cdots, U_{(n)})$ a la même loi que 
+	$$ \left( \frac{\Gamma_1}{\Gamma_{n+1}} ,\cdots,\frac{\Gamma_n}{\Gamma_{n+1}}\right)$$
+	où $\Gamma_k= \sum_{1\leq i \leq k} e_i$ et $P_{e_i}= \exp(1)$ et les $e_i$ sont indépendantes (donc iid).
+\end{prop}
+
 \end{document}
+
