@@ -377,6 +377,12 @@ $$ \lim_{n\to\infty} P(M_n \leq a_n x ) = 0.$$
 \begin{proof}
 	On prouve que $\overline{F} (x_F - \tfrac1x) \in \mathrm{RV}_{-\alpha}$ implique $F \in \mathrm{MDA}(\Psi_\alpha)$. On définit
 	$$ F_\ast (x)= F(x_F - \tfrac1x) \indic_{(x>0)}(x)$$
-	et d'après la proposition précédente $F_\ast \in \mathrm{MDA}(\Phi_\alpha)$ avec $a^* _n = F_\ast ^{-1} (1-\tfrac1n)$.
+	et d'après la proposition précédente $F_\ast \in \mathrm{MDA}(\Phi_\alpha)$ avec $a^* _n = F_\ast ^{-1} (1-\tfrac1n)$.\\
+	On a pour tout $x\in\R_+ ^*$,
+	\begin{align*}
+		F_* (a_n ^* x ) \underset{n\to\infty}{\longrightarrow}&  \Phi_\alpha(x)\\
+		F(x_F - \frac{1}{a_n ^* x }) ^n  \underset{n\to\infty}{\longrightarrow}&  \Phi_\alpha(x)\\
+		F(x_F + \frac{1}{a_n ^* }y) ^n  \underset{n\to\infty}{\longrightarrow}&  \Phi_\alpha(-\frac1y )=\Psi_{\alpha}(y) && (y=-\frac{1}{x})
+	\end{align*}
 \end{proof}
 \end{document}
