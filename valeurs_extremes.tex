@@ -386,5 +386,14 @@ $$ \lim_{n\to\infty} P(M_n \leq a_n x ) = 0.$$
 	\end{align*}
 Par conséquent,
  $$ P(a_n^* (M_n - x_F) \leq y ) \underset{n\to\infty}{\longrightarrow} \Psi_{\alpha} (y),\quad\forall y < 0.$$
+ De plus,
+ \begin{align*}
+ 	a_n ^* = &  \inf \{u \in\R; \, F_* (u) \geq 1 -\tfrac1n \}\\
+ 	=&   \inf \{u \in\R; \, F_ (x_F -\tfrac1u ) \geq 1 -\tfrac1n \}
+ 	= & ( \sup \{y \in\R; \, F_ (x_F -y  ) \geq 1 -\tfrac1n \})^{-1}
+ 	=&  (x_F - \inf\{z; \, F(z) \geq 1 -\tfrac1n \})^{-1}\\
+ 	= & (x_F - F^{-1}(1-\tfrac1n ))^{-1}\\
+ 	= & \frac{1}{a_n}.
+ \end{align*}
 \end{proof}
 \end{document}
