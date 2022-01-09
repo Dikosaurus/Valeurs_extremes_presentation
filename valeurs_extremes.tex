@@ -441,7 +441,34 @@ Les assertions suivantes sont équivalentes:\
 \begin{rem}\
 \begin{enumerate}
 	\item L'estimateur de Pickands est biaisé;
-	\item Si on supppose $\lim_{n\to \infty} \tfrac{k(n)}{\log \log (n)}=+\infty$, alors $\widehat{\xi}_{k(n)}\cvps \xi.$
+	\item Si on suppose $\lim_{n\to \infty} \tfrac{k(n)}{\log \log (n)}=+\infty$, alors $\widehat{\xi}_{k(n)}\cvps \xi.$
 \end{enumerate}
 \end{rem}
+\begin{prop}
+	Soit $p \in ]0,1[$. On suppose que $F$ est continue et admet une seule solution à l'équation $F(x_p)=p$. Soit $k(n)$ une suite d'entiers telle que $1 \leq k(n) \leq n$ avec $\lim_{n\to\infty}\tfrac{k(n)}{n}=p$ (par exemple $k(n)= \lfloor np \rfloor +1$), alors 
+	$$ X_{k(n)} \cvP x_p\quad \text{et}\quad X_{k(n)}\cvP x_p$$
+	où $x_p$ est le quantile théorique d'indice $p$.
+\end{prop}
+\begin{rem}
+	C'est une version analogue à la loi forte/faible des grands nombres mais cette fois pour les quantiles.
+\end{rem}
+\begin{proof}
+	Soit $S_n (x)$ le nombre de franchissement de $x$ par les $X_i$, c-à-d
+	$$S_n (x)= \sum_{1\leq i \leq n} \indic_{(X_i \leq x)}.$$
+	On remarque que 
+	$$ (X_{k(n)}\leq x )= (S_n (x) \geq k (n)).$$
+	De plus,
+	$$ \frac{S_n (x)}{k(n)}= \frac{S_n(x)}{n}\frac{n}{k(n)}\underset{n\to\infty}{\longrightarrow} \frac{F(x)}{p} \,ps$$
+	et donc la convergence est encore vrai en probabilité.\\
+	Ainsi,
+	\begin{align*}
+		P(X_{k(n)} \leq x) = & P\left(\frac{S_n(x)}{k(n)}\geq 1\right)\\
+		 \underset{n\to\infty}{\longrightarrow} & \left\{\begin{array}{ll}
+		 	0 & \text{, si }F(x)< p \\ 1 & \text{, si }F(x)\geq p
+		 \end{array}\right.\\
+	 \underset{n\to\infty}{\longrightarrow} & \left\{\begin{array}{ll}
+	 	0 & \text{, si }x< x_p \\ 1 & \text{, si }x\geq x_p
+	 \end{array}\right. && \text{(unicité $F(x_p)=p$)}
+	\end{align*}
+\end{proof}
 \end{document}
