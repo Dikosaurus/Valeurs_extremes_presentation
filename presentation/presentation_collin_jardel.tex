@@ -275,7 +275,7 @@
 				\item Les relevés s'étendent sur une période de 6 ans.
 				\end{itemize}
 			\end{frame}
-			\begin{frame}{Limitation des o}
+			\begin{frame}{Limitation des données}
 				\begin{itemize}[<+->]
 					\item Les données collectés l'ont été par l'Université de Sheffield pour le Met Office (ce qui peut induire un problème de turbulences dans les relevés puisque situés en milieu urbain);
 					\item Les données collectées sont données heure par heure, avec une vitesse en noeuds ($1$ noeud = 1.852 kmh), la direction du vent étant relevée au plus près d'un pas de 10\textdegree.
@@ -288,6 +288,107 @@
 				\end{itemize}
 			\end{frame}
 		
+		\section{Modélisation}
+		
+		\begin{frame}{Notation}
+		\begin{itemize}[<+->]
+			\item La résolution de chaque rafale particulière en composantes est nécessaire pour décrire son impact complet dans les directions du modèle paramétrique.
+			\item On note et définit $Y_\phi$ pour une rafale de puissance $Y$ et d'angle $\phi$. La composante de $Y_\phi$ dans la direction $\alpha$ est donnée par 
+			$$ Y \cos(\alpha-\phi), \text{si }\vabs{\alpha-\phi} \pmod{\pi} < \frac{\pi}{2} \text{ et }0\text{ sinon}.$$
+			
+		\end{itemize}
+		\end{frame}
+	\begin{frame}{Filtration des événements extrêmes}
+		\begin{itemize}[<+->]
+			\item Pour éviter des autocorrélations importante en particulier lors d'événements extrêmes, les données sont filtrées en n'utilisant qu'une valeur par intervalle de temps tempétueux. On note $\tau$ la durée choisie pour une tempête.
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Modèle utilisé}
+		\begin{itemize}[<+->]
+			\item On note $Y_{\phi,m}^{(l)}$ la $l$-ième statistique d'ordre pour l'année $m$ dans la direction $\phi$.
+			\item La densité du couple $(Y_{\phi,m}^{(l)})_{1\leq i \leq r}$ est donnée par 
+		\begin{align*}
+	&	f_{\phi, m}(y_{\phi, m}^{(1)} , y_{\phi, m}^{(2)},\cdots, y_{\phi, m}^{(r)})=\\
+	&	\sigma_{\phi}^{-r} \exp \left[-\left\{1-k_{\phi}\left(\frac{y_{\phi, m}^{(r)}-\mu_{\phi}}{\sigma_{\phi}}\right)\right\}^{1 / k_{\phi}}\right.+ \\
+	&	\left.		\left(\frac{1}{k_{\phi}}-1\right) \sum_{l=1}^{r} \log \left\{1-k_{\phi}\left(\frac{y_{\phi, m}^{(l)}-\mu_{\phi}}{\sigma_{\phi}}\right)\right\}\right]
+		\end{align*}
+	pour $y_{\phi, m}^{(1)} \geq y_{\phi, m}^{(2)} \geq \cdots \geq y_{\phi, m}^{(r)}$.
+	\end{itemize}
+	\end{frame}
+\begin{frame}{Modèle utilisé 2}
+	\begin{itemize}[<+->]
+		\item $\sigma_\phi >0$, paramètre d'échelle;
+		\item $\mu_\phi$ paramètre de localisation;
+		\item $k_\phi$ paramètre de forme;
+		\item $1-k_{\phi}\frac{y_{\phi, m}^{(l)}-\mu_{\phi}}{ \sigma_{\phi}} \geq 0$ pour $l=1, \cdots, r$
+	\end{itemize}
+\end{frame}
+\begin{frame}{Décomposition harmonique de $\mu,\sigma$ et $k$}
+\begin{itemize}[<+->]
+	\item les paramètres $2\pi$-périodiques $\mu,\sigma$ et $k$ se décomposent sous la forme
+	$$a_{i}+\sum_{t=1}^{n_{i}} b_{i, t} \cos \left(t \phi-\omega_{i, t}\right),\quad i \in\{1,2,3\}$$
+	\item $n_i\geq 0$ le nombre d'harmoniques considérés;
+	\item $b_{i,t}\geq 0$ et $0 < \omega_{i,t} \leq \frac{2\pi}{t}$;
+	\item On obtient un modèle à $3+2(n_1+n_2+n_3)$ paramètres.
+\end{itemize}
+\end{frame}
+\begin{frame}{Estimations des paramètres $a_i,b_{i,t},\omega_{i,t}$}
+\begin{itemize}[<+->]
+	\item On note $\Phi$ la discrétisation du cercle choisie;
+	\item La log-vraisemblance s'écrit
+	$$L=\sum_{\phi \in \Phi} \sum_{m=1}^{N} \log f_{\phi, m}$$
+	\item Par méthode du maximum de vraisemblance on estime les paramètres  $a_i,b_{i,t},\omega_{i,t}$.
+\end{itemize}
+\end{frame}
+\begin{frame}{Ajustement modèle aux contraites}
+	\begin{itemize}[<+->]
+	\item Dans le cas classique d'indépendance en notant la matrice d'information $H$, la matrice de covariance des estimations est $H^{-1}$
+	\item Ici l'indépendance n'est pas vérifiée, la matrice qu'il faut utiliser est 
+	$$H^{-1} VH^{- 1},$$
+	où $V$ est la matrice de covariance du vecteur de gradient de vraisemblance.
+	\item La statistique du test d'hypothèse de log-vraisemblance modifié est de la forme
+	$$\sum_{1\leq i \leq p}\lambda_i z_i$$
+	avec $z_i$ de loi normale et $\lambda_i$ sont les valeurs propres d'une certaine matrice.
+\end{itemize}
+\end{frame}
+\begin{frame}{Applications aux données mesurées}
+	\begin{itemize}[<+->]
+		\item Paramètres choisis: $r=10$, $\Phi=\{\frac{i\pi}{18},0\leq i \leq 35\}$, $\tau=60h$;
+		\item En appelant $(n_1,n_2,n_3)$ pour le décrire le modèle choisi, les tests de significativité montre que les modèles (3,2,2) et (3,2,0) sont les mieux adaptés
+	\end{itemize}
+\end{frame}
+\begin{frame}{Estimation des paramètres}
+	\includegraphics[scale=0.5]{estimation_param}
+	
+\end{frame}
+
+\section{Modélisation de la dépendance angulaire}
+\begin{frame}{Motivations}
+	blabla
+\end{frame}
+\begin{frame}{GEV généralisé de Haan}
+	
+\end{frame}
+\begin{frame}{Paramètres}
+
+\end{frame}
+\section{Estimation des paramètres de la dépendance angulaire}
+\begin{frame}{$\theta$}
+
+\end{frame}
+\begin{frame}{$\xi$}
+
+\end{frame}
+\begin{frame}{graphique}
+
+\end{frame}
+\begin{frame}{Conclusion}
+	
+\end{frame}
+
+
+	
+
 			
 
 %				\begin{frame}{References}
