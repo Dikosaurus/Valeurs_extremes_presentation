@@ -251,13 +251,30 @@
 				%\subsection{Premières définitions}
 				
 			\begin{frame}{\thesection{} -  \secname}
-			
 			\begin{itemize}[<+->]
-				\item Modéliser les directions du vents
+				\item La vitesse extrême des vents a déjà été modélisée;
+				\item Les données de vitesses moyenne et maximale sont connues, ainsi que la composante directionnelle principale.
 			\end{itemize}
 			\end{frame}
-		
-			
+			\begin{frame}{Limitations}
+				\begin{itemize}[<+->]
+					\item La composante directionnelle du vent n'est pas prise en compte (ce qui permettrait une meilleure conception des bâtiments ainsi qu'une économie substantielle);
+					\item Pas de lissage de la modélisation, au mieux l'espace est divisé en 6 secteurs (que les auteurs de l'article vont étendre à 36 secteurs)
+				\end{itemize}
+			\end{frame}
+			\begin{frame}{Problèmes relatifs à une telle tentative de modélisation}
+					\begin{itemize}[<+->]
+					\item Problème de changements brusque de directions horaires du vents plus particulièrement dans le cas de tempêtes;
+					\item Problème liés à l'augmentation de directions considérées (il faut choisir attentivement les relations de dépendances);
+				\end{itemize}
+			\end{frame}
+			\begin{frame}{Données utilisées par les auteurs}
+			\begin{itemize}[<+->]
+				\item Les données collectés l'ont été par l'Université de Sheffield pour le Met Office (ce qui peut induire un problème de turbulences dans les relevés puisque situés en milieu urbain);
+				\item Les données collectées sont données heure par heure, avec une vitesse en noeuds ($1$ noeud = 1.852 kmh), la direction du vent étant relevée au plus près d'un pas de 10\textdegree.
+				\item Les relevés s'étendent sur une période de 6 ans.
+				\end{itemize}
+			\end{frame}
 		
 			
 
