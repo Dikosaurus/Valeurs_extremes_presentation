@@ -1,0 +1,272 @@
+\documentclass[10pt]{beamer}
+\usetheme{Goettingen}
+%\usetheme{AnnArbor}
+%\setbeamercolor{palette sidebar secondary}{fg=yellow,bg=blue}
+%\setbeamercolor{section in sidebar shaded}{fg=red,bg=black}
+%\useoutertheme[right]{sidebar}
+%\setbeamersize{sidebar right width=2.5cm}
+\setbeamersize{
+	text margin left    = .04\paperwidth,
+	text margin right   = .04\paperwidth,
+	sidebar width left  = 0mm,
+	sidebar width right = 20mm,
+	description width   = 10mm,
+	mini frame size     = 1mm,
+	mini frame offset   = 0mm
+}
+\addtobeamertemplate{navigation symbols}{}{%
+	\usebeamerfont{footline}%
+	\usebeamercolor[fg]{footline}%
+	\hspace{1em}%
+	\insertframenumber/\inserttotalframenumber
+}
+
+\makeatletter
+\setbeamertemplate{sidebar \beamer@sidebarside}
+{
+	\beamer@tempdim=\beamer@sidebarwidth%
+	\advance\beamer@tempdim by -6pt%
+	\vskip4em%
+	\insertverticalnavigation{\beamer@sidebarwidth}%
+	\vfill
+	\ifx\beamer@sidebarside\beamer@lefttext%
+	\else%
+	\usebeamercolor{normal text}%
+	\llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+	\vskip2pt%
+	\fi%
+}%
+
+\ifx\beamer@sidebarside\beamer@lefttext%
+\defbeamertemplate*{sidebar right}{sidebar theme}
+{%
+	\vfill%
+	\llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+	\vskip2pt}
+\fi
+
+\setbeamertemplate{section in sidebar}%{sidebar theme}
+{%
+	\vbox{%
+		\vskip1ex%
+		\beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionheadnumber
+			~\insertsectionhead}%
+	}%
+}
+\setbeamertemplate{section in sidebar shaded}%{sidebar theme}
+{%
+	\vbox{%
+		\vskip1ex%
+		\beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionheadnumber
+			~\insertsectionhead}%
+	}%
+}
+\makeatother
+\usepackage{standalone} 
+
+\usepackage{enumerate}
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+\usepackage{amsthm}%
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[french]{babel}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{aliascnt}
+\usepackage{etoolbox}
+
+\usepackage{hyperref}
+\addto\extrasfrench{%
+	\def\chapterautorefname{chapitre}%
+	\def\sectionautorefname{section}%
+	\def\subsectionautorefname{sous-section}%
+	\def\subsubsectionautorefname{Paragraphe}%
+	\def\paragraphautorefname{Paragraph}%
+	\def\subparagraphautorefname{Subparagraph}%
+	\def\alignautorefname{}
+}
+
+
+
+\newcommand{\id}{\mathrm{Id}}
+%\usepackage[pdftex]{tulhypref}
+%\usepackage[pdftex,colorlinks=true,linkcolor=red,bookmarks=false]{tulhypref}
+% Ensembles R, C, N, Z et D
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\s}{\mathbb{S}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\VV}{\mathcal{V}}
+%\renewcommand{\thepart}{\Arabic{part}}
+\newcommand{\ps}[1]{\left< #1 \right>}
+\newcounter{dader}[section]
+\renewcommand{\thedader}{\thesection.\arabic{dader}}
+\theoremstyle{plain}
+\newaliascnt{thms}{dader}
+\newtheorem{thm}[thms]{Theorem}
+\aliascntresetthe{thms}%[section]
+\newtheorem*{thm*}{Theo}
+%\theoremstyle{theorem}
+
+% numérotés par section
+\newaliascnt{prop}{dader}
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}%[section]
+\newtheorem{lemme}[dader]{Lemme}%[section]
+\newtheorem*{lemme*}{Lemme}
+\newaliascnt{cor}{dader}
+\newtheorem{cor}[cor]{Corollaire}
+\aliascntresetthe{cor}
+%[section]
+\newtheorem*{corollaire}{Corollaire}
+\theoremstyle{definition}
+\newtheorem{de}{Definition}
+%\aliascntresetthe{de}%[section]
+\BeforeBeginEnvironment{de}{%
+	\setbeamercolor{block title}{fg=black,bg=blue!25!white}
+	\setbeamercolor{block body}{fg=blue, bg=blue!5!white}
+}
+\AfterEndEnvironment{de}{
+	\setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+	\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg, fg=black}
+}
+\newtheorem*{defff}{Définition}
+%[section]
+\newtheorem*{conv}{Convention}
+\newtheorem*{nota}{Notation}
+
+\newaliascnt{app}{dader}
+\newtheorem{application}[app]{Application}
+\aliascntresetthe{app}%[section]
+\newtheorem*{terminologie}{Terminologie}
+%\theoremstyle{remark}
+\newtheorem{rem}[dader]{Remark}
+\newaliascnt{ex}{dader}
+
+%[section]
+\newtheorem{ex}[ex]{Exemple}
+\aliascntresetthe{ex}%[section]
+\newtheorem{ctrex}[dader]{Contre-exemple}%[section]
+
+%\usepackage[all]{xy}
+\usepackage{pgf,tikz}
+\usetikzlibrary{decorations.markings,arrows,backgrounds,automata,calc,patterns,shapes.arrows}
+\usetikzlibrary{decorations.markings,arrows,backgrounds,automata,calc,shapes.arrows}
+
+%\let\endtitlepage\relax 
+\author{Pierre-Henry COLLIN\\Camille Jardel}
+\title{Présentation de l'article:\\ \emph{Directional Modelling of Extreme Wind Speed}}
+\titlegraphic{\includegraphics[scale=.25]{logoiecl.jpg}\includegraphics[scale=0.3]{UL_LOGO.jpg}}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute{IECL} 
+\date{Metz, le 25 Janvier 2022} 
+\AtBeginSection[]{
+	\begin{frame}{}
+		\small \tableofcontents[currentsection, hideothersubsections]
+	\end{frame} 
+}
+
+\setbeamercolor{block title}{bg=red!30,fg=black}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\newtheorem{examplefirst}{Example}
+\newtheorem{examplesecond}{Example}
+\newenvironment<>{examplefirst}[1][]{%
+	\setbeamercolor{block title example}{fg=white,bg=blue!25!white}%
+	\begin{example}#2[#1]}{\end{example}}
+\newenvironment<>{examplesecond}[1][]{%
+	\setbeamercolor{block title example}{fg=white,bg=blue!75!black}%
+	\begin{example}#2[#1]}{\end{example}}
+
+
+
+
+
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{decorations.markings,arrows,shapes.arrows,backgrounds,automata,positioning,calc,patterns,decorations.pathreplacing}
+\tikzset{
+	side by side/.style 2 args={
+		line width=2pt,
+		#1,
+		postaction={
+			clip,postaction={draw,#2}
+		}
+	}
+}
+			
+			
+			\newcommand{\vabs}[1]{\left\vert #1 \right\vert}
+			%\newcommand{\norme}[1]{\left\Vert #1 \right\Vert}
+			
+			
+			
+			
+			
+			
+			
+		%	\addbibresource{bibli1.bib}
+			\begin{document}
+				
+				
+				
+				
+				
+				\begin{frame}
+					\titlepage
+				\end{frame}
+				\begin{frame}{Sommaire}
+					\tableofcontents
+				\end{frame}
+				
+				\section{Introduction}
+				
+				%\subsection{Premières définitions}
+				
+			\begin{frame}{\thesection{} -  \secname}
+			
+			\begin{itemize}[<+->]
+				\item Modéliser les directions du vents
+			\end{itemize}
+			\end{frame}
+		
+			
+		
+			
+
+%				\begin{frame}{References}
+%					%\nocite{*}
+%					%	\printbibliography
+%					\bibliographystyle{amsalpha}
+%					\bibliography{bibli1}
+%				\end{frame}
+
+				
+\end{document}
