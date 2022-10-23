@@ -499,14 +499,20 @@ $$ \vabs{F(X_{k(n)}) -F(x_p)} \cvps 0.$$
 \end{prop}
 Soit 
 $$ F_V (x) = \left(1- \frac{1}{x}  \right) \indic_{x \geq 1}$$
-la fonction de répartition de la loi de Paretto.
-
-Soient $V_1,\cdots , V_n $ des v.a. iid de loi $F_V$ et $(k(n))_{n \in\N^*}$ une suite d'entiers telle que $1 \leq k(n)\leq n$ et 
+la fonction de répartition de la loi de Paretto. Soient $V_1,\cdots , V_n $ des v.a. iid de loi $F_V$ et $(k(n))_{n \in\N^*}$ une suite d'entiers telle que $1 \leq k(n)\leq n$ et 
 $$
 \lim_{n\to \infty} k(n)= +\infty\quad \text{et} \quad \lim_{n \to + \infty} \frac{k(n)}{n}=0.$$
 \begin{prop}
 	On a 
 	$$ \frac{k(n)}{n}V_{n-k(n)+1} \cvps 1.$$
 \end{prop}
+
+\begin{prop}
+Soit $\xi \in\R$, alors $F \in \mathrm{MDA}(H_\xi)$ si et seulement si pour tous $x,y > 0$
+$$ \lim_{s \to +\infty} \frac{U(sx) - U(s)}{U(sy) - U(y)} = \left\{ \begin{array}{ll}
+	\frac{x^\xi -1}{y^\xi -1}& \xi \neq 0\\
+	\frac{\log(x)}{\log(y)} & \xi =0
+\end{array}\right.$$
+où $U(t) = F^{-1}(1 -\tfrac{1}{t}).$
 \end{document}
 
