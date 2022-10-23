@@ -1,38 +1,203 @@
 \RequirePackage{luatex85}
 \documentclass[10p,a4paper,reqno,titlepage]{report}
+\usepackage{standalone} 
+\usepackage{etex}
+
+\usepackage{enumerate}
+
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}
+\usepackage{amsthm}%
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+%\usepackage{notomath}
+
+\usepackage[french]{babel}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumerate}
+\usepackage{ulem}
+
+\usepackage{multirow}
+
+\usepackage{aliascnt}
+\usepackage{hyperref}
+\addto\extrasfrench{%
+\def\chapterautorefname{chapitre}%
+\def\sectionautorefname{section}%
+\def\subsectionautorefname{sous-section}%
+\def\subsubsectionautorefname{Paragraphe}%
+\def\paragraphautorefname{Paragraph}%
+\def\subparagraphautorefname{Subparagraph}%
+\def\alignautorefname{}
+}
 
 
-%scrreprt
+
+\newcommand{\R}{\mathbb{R}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\s}{\mathbb{S}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\indic}{\mathrm{{\bf 1}}}
+\newcommand{\FFT}{(\mathcal{F}_t)_{t\geq 0}}
+\newcommand{\XT}{(X_t)_{t \geq 0}}
+\newcommand{\WT}{(W_t)_{t \geq 0}}
+\newcommand{\WTf}{(W_t)_{t \in [0,T]}}
+\newcommand{\MT}{(M_t)_{t \geq 0}}
+\newcommand{\FFtf}{(\mathcal{F}_t)_{t\in[0,T]}}
+\newcommand{\Mtf}{(M_t)_{t \in [0,T]}}
+%\renewcommand{\thepart}{\Arabic{part}}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+%\renewcommand{\theenumi}{(\roman{enumi})}
+%\renewcommand{\theitemi}{\Alpha{itemi}}
+\usepackage{titlesec}      % customizing section titles 
+%\titleformat{\chapter}[hang]{\bfseries\Large\center}{Chapitre \thechapter.}{2pt}{}
+%\titlespacing{\chapter}
+%{3pc}{*3}{*2}[3pc]
+\titlespacing{\chapter}{0pt}{4pt}{4pt} 
+\titleformat{\section}{\bfseries\large}{\thesection -}{2pt}{} 
+\titlespacing{\section}{0pt}{8pt}{4pt} 
+\titleformat{\subsection}{\bfseries\normalsize}{\thesection .\thesubsection -}{2pt}{} 
+\titlespacing{\subsection}{0pt}{4pt}{2pt} 
+\titleformat{\subsubsection}{\bf\scshape}{\thesection .\thesubsection .\thesubsubsection -}{0em}{} 
+\titlespacing{\subsubsection}{0pt}{5pt}{5pt} 
+
+%\titleformat{\subsubsection}[runin]{\bf\scshape}{}{0em}{} 
 %----------------------------------------------------------
-% This is a sample document for the AMS LaTeX Book or Monograph Class
-% Class options
-%       --  Body text point size:
-%  %                        8pt, 9pt, 10pt (default), 11pt, 12pt
-%       --  Paper size:  letterpaper (8.5x11 inch, default), a4paper
-%       --  Orientation: portrait(default), landscape
-%       --  Print side:  oneside, twoside (default)
-%       --  Quality:     final(default), draft
-%       --  Title page:  titlepage, notitlepage
-%       --  Start chapter on left:
-%                        openright (no, default), openany
-%       --  Columns:     onecolumn (default), twocolumn
-%       --  Omit extra math features:
-%                        nomath
-%       --  AMS fonts (noamasfonts available):
-%                        noamsfonts
-%       --  PSAMSfonts (fewer AMSfontsizes)
-%                        psamsfonts
-%       --  Equation numbering (equation numbers on the left is the default)
-%                        leqno (default), reqno
-%       --  Equation centering (equations centered is the default)
-%                        centeredtags (default}, tbtags (top, bottom)
-%       --  Displayed equations (centered is the default)
-%                        fleqn (flush left)
-% For instance the command
-%          \documentclass[a4paper,12p,reqno]{amsbook}
-% ensures that the paper size is a4, fonts are typeset at the size 12p
-% and the equation numbers are on the right side.
-\usepackage{allpack}
+\newcounter{dader}[chapter]
+\renewcommand{\thedader}{\thechapter.\arabic{dader}}
+\theoremstyle{plain}
+\newaliascnt{thms}{dader}
+\newtheorem{thm}[thms]{Théorème}
+\aliascntresetthe{thms}%[section]
+\newtheorem*{thm*}{Théorème}
+%\theoremstyle{theorem}
+
+% numérotés par section
+\newaliascnt{prop}{dader}
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}%[section]
+\newtheorem{lemme}[dader]{Lemme}%[section]
+\newtheorem*{lemme*}{Lemme}
+\newaliascnt{cor}{dader}
+\newtheorem{cor}[cor]{Corollaire}
+\aliascntresetthe{cor}
+%[section]
+\newtheorem*{corollaire}{Corollaire}
+\theoremstyle{definition}
+\newaliascnt{de}{dader}
+\newtheorem{de}[de]{Définition}
+\aliascntresetthe{de}%[section]
+
+\newtheorem*{conv}{Convention}
+\newtheorem*{nota}{Notation}
+
+\newaliascnt{app}{dader}
+\newtheorem{application}[app]{Application}
+\aliascntresetthe{app}%[section]
+\newtheorem*{terminologie}{Terminologie}
+%\theoremstyle{remark}
+\newtheorem{rem}[dader]{Remarque}
+\newaliascnt{ex}{dader}
+
+%[section]
+\newtheorem{ex}[ex]{Exemple}
+\aliascntresetthe{ex}%[section]
+\newtheorem{ctrex}[dader]{Contre-exemple}%[section]
+
+
+
+
+\def\restriction#1#2{\mathchoice
+{\setbox1\hbox{${\displaystyle #1}_{\scriptstyle #2}$}
+	\restrictionaux{#1}{#2}}
+{\setbox1\hbox{${\textstyle #1}_{\scriptstyle #2}$}
+	\restrictionaux{#1}{#2}}
+{\setbox1\hbox{${\scriptstyle #1}_{\scriptscriptstyle #2}$}
+	\restrictionaux{#1}{#2}}
+{\setbox1\hbox{${\scriptscriptstyle #1}_{\scriptscriptstyle #2}$}
+	\restrictionaux{#1}{#2}}}
+\def\restrictionaux#1#2{{#1\,\smash{\vrule height .8\ht1 depth .85\dp1}}_{\,#2}} 
+
+\makeatletter
+\newcommand{\bigint}{\@ifnextchar_\@bigintsub\@bigintnosub}
+\def\@bigintsub_#1{\def\@int@subscript{#1}\@ifnextchar^\@bigintsubsup\@bigintsubnosup}
+\def\@bigintsubsup^#1{\mathop{\text{\large$\int_{\text{\normalsize$\scriptstyle\@int@subscript$}}^{\text{\normalsize$\scriptstyle#1$}}$}}\nolimits}
+\def\@bigintsubnosup{\mathop{\text{\large$\int_{\text{\normalsize$\scriptstyle\@int@subscript$}}$}}\nolimits}
+\def\@bigintnosub{\@ifnextchar^\@bigintnosubsup\@bigintnosubnosup}
+\def\@bigintnosubsup^#1{\mathop{\text{\large$\int^{\text{\normalsize$\scriptstyle#1$}}$}}\nolimits}
+\def\@bigintnosubnosup{\mathop{\text{\large$\int$}}\nolimits}
+\makeatother
+\DeclareMathOperator*{\supess}{\mathrm{sup ess}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\DeclareMathOperator{\Isom}{\mathrm{Isom}}
+\DeclareMathOperator{\Fix}{\mathrm{Fix}}
+\DeclareMathOperator{\Card}{\mathrm{Card}}
+\DeclareMathOperator{\Ord}{\mathrm{Ord}}
+\DeclareMathOperator*{\Conj}{\mathrm{Conj}}
+\DeclareMathOperator*{\Stab}{\mathrm{Stab}}
+\DeclareMathOperator{\Mat}{\mathrm{Mat}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Ker}{\mathrm{Ker}}
+\DeclareMathOperator{\Imf}{\mathrm{Im}}
+\DeclareMathOperator{\Int}{\mathrm{Int}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\Tr}{\mathrm{Tr}}
+\DeclareMathOperator{\grad}{\mathrm{grad}}
+\DeclareMathOperator{\GL}{\mathrm{GL}}
+\newcommand{\somme}[3]{\sum\limits_{#1}^{#2}{#3}}
+\newcommand{\union}[3]{\bigcup\limits_{#1}^{#2}{#3}}
+\newcommand{\inter}[3]{\bigcap\limits_{#1}^{#2}{#3}}
+\newcommand{\produit}[3]{\prod\limits_{#1}^{#2}{#3}}
+\newcommand{\coproduit}[3]{\coprod\limits_{#1}^{#2}{#3}}
+\newcommand{\integrale}[3]{\bigint_{#1}^{#2}{#3}}
+\newcommand{\limite}[2]{\lim\limits_{#1}{#2}}
+\newcommand{\pardef}{\stackrel{def}{=}}
+\newcommand{\parhyp}{\stackrel{hyp}{=}}
+\newcommand{\notation}{\stackrel{not}{=}}
+\newcommand{\vabs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norme}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\crochet}[1]{[\![ #1 ]\!]}
+\newcommand{\dans}{\longrightarrow}
+\newcommand{\associe}{\longmapsto}
+\newcommand{\CN}{\Longrightarrow}
+\newcommand{\CS}{\Longleftarrow}
+\newcommand{\CNS}{\Longleftrightarrow}
+\newcommand{\ps}[1]{\left< #1 \right>}
+\newcommand{\cvps}{\stackrel{p.s.}{\longrightarrow}}
+\newcommand{\cvP}{\stackrel{P}{\longrightarrow}}
+\newcommand{\cvL}{\stackrel{\mathrm{L}^1}{\longrightarrow}}
+\newcommand{\cvloi}{\stackrel{\mathcal{L}}{\longrightarrow}}
+\newcommand{\XN}{(X_n)_{n \geqslant 0}}
+\newcommand{\MN}{(M_n)_{n\geqslant 0}}
+\newcommand{\FN}{(\FF_n)_{n \geqslant 0}}
+\newcommand{\As}{\mathcal{A}_{\mathfrak{s}}}
+
+\newcommand{\dpar}{\partial}
 \usepackage[a4paper,hmargin={2cm,2cm},twoside,includehead=true,headsep=2mm,tmargin=2cm,bmargin=2cm,headheight=15pt]{geometry}
 
 
