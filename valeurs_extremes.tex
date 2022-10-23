@@ -497,6 +497,16 @@ $$ \vabs{F(X_{k(n)}) -F(x_p)} \cvps 0.$$
 	$$ \left( \frac{\Gamma_1}{\Gamma_{n+1}} ,\cdots,\frac{\Gamma_n}{\Gamma_{n+1}}\right)$$
 	où $\Gamma_k= \sum_{1\leq i \leq k} e_i$ et $P_{e_i}= \exp(1)$ et les $e_i$ sont indépendantes (donc iid).
 \end{prop}
+Soit 
+$$ F_V (x) = \left(1- \frac{1}{x}  \right) \indic_{x \geq 1}$$
+la fonction de répartition de la loi de Paretto.
 
+Soient $V_1,\cdots , V_n $ des v.a. iid de loi $F_V$ et $(k(n))_{n \in\N^*}$ une suite d'entiers telle que $1 \leq k(n)\leq n$ et 
+$$
+\lim_{n\to \infty} k(n)= +\infty\quad \text{et} \quad \lim_{n \to + \infty} \frac{k(n)}{n}=0.$$
+\begin{prop}
+	On a 
+	$$ \frac{k(n)}{n}V_{n-k(n)+1} \cvps 1.$$
+\end{prop}
 \end{document}
 
