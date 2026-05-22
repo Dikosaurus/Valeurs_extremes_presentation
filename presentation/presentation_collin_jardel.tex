@@ -180,8 +180,9 @@
 \usetikzlibrary{decorations.markings,arrows,backgrounds,automata,calc,shapes.arrows}
 
 %\let\endtitlepage\relax 
-\author{Pierre-Henry COLLIN\\Camille Jardel}
-\title{Présentation de l'article:\\ \emph{Directional Modelling of Extreme Wind Speed}}
+\author{Pierre-Henry COLLIN\\Camille JARDEL}
+\title{Présentation de l'article:\\ \emph{Directional Modelling of Extreme Wind Speed}\\
+{\small par Stuart G. Coles et David Walshaw}}
 \titlegraphic{\includegraphics[scale=.25]{logoiecl.jpg}\includegraphics[scale=0.3]{UL_LOGO.jpg}}
 %\setbeamercovered{transparent} 
 %\setbeamertemplate{navigation symbols}{} 
@@ -284,11 +285,11 @@
 			\end{frame}
 			\begin{frame}{Aspects non étudiés par les auteurs}
 				\begin{itemize}[<+->]
-					\item Certaines rafales des plus importantes peuvent être masquées dans le relevé des données une rafale plus importante (essentiellement en cas de tempête)
+					\item Certaines rafales des moins importantes peuvent être masquées dans le relevé par une rafale plus importante (essentiellement en cas de tempête)
 				\end{itemize}
 			\end{frame}
 		
-		\section{Modélisation}
+		\section{Modélisation et estimation des paramètres de la GEV}
 		
 		\begin{frame}{Notation}
 		\begin{itemize}[<+->]
@@ -300,7 +301,7 @@
 		\end{frame}
 	\begin{frame}{Filtration des événements extrêmes}
 		\begin{itemize}[<+->]
-			\item Pour éviter des autocorrélations importante en particulier lors d'événements extrêmes, les données sont filtrées en n'utilisant qu'une valeur par intervalle de temps tempétueux. On note $\tau$ la durée choisie pour une tempête.
+			\item Pour éviter des autocorrélations importantes en particulier lors d'événements extrêmes, les données sont filtrées en n'utilisant qu'une valeur par intervalle de temps tempétueux. On note $\tau$ la durée choisie pour une tempête.
 		\end{itemize}
 	\end{frame}
 	\begin{frame}{Modèle utilisé}
@@ -315,7 +316,7 @@
 	pour $y_{\phi, m}^{(1)} \geq y_{\phi, m}^{(2)} \geq \cdots \geq y_{\phi, m}^{(r)}$.
 	\end{itemize}
 	\end{frame}
-\begin{frame}{Modèle utilisé 2}
+\begin{frame}{Modèle utilisé (2)}
 	\begin{itemize}[<+->]
 		\item $\sigma_\phi >0$, paramètre d'échelle;
 		\item $\mu_\phi$ paramètre de localisation;
@@ -340,7 +341,7 @@
 	\item Par méthode du maximum de vraisemblance on estime les paramètres  $a_i,b_{i,t},\omega_{i,t}$.
 \end{itemize}
 \end{frame}
-\begin{frame}{Ajustement modèle aux contraites}
+\begin{frame}{Ajustement du modèle aux contraintes}
 	\begin{itemize}[<+->]
 	\item Dans le cas classique d'indépendance en notant la matrice d'information $H$, la matrice de covariance des estimations est $H^{-1}$
 	\item Ici l'indépendance n'est pas vérifiée, la matrice qu'il faut utiliser est 
@@ -354,7 +355,7 @@
 \begin{frame}{Applications aux données mesurées}
 	\begin{itemize}[<+->]
 		\item Paramètres choisis: $r=10$, $\Phi=\{\frac{i\pi}{18},0\leq i \leq 35\}$, $\tau=60h$;
-		\item En appelant $(n_1,n_2,n_3)$ pour le décrire le modèle choisi, les tests de significativité montre que les modèles (3,2,2) et (3,2,0) sont les mieux adaptés
+		\item En appelant $(n_1,n_2,n_3)$ pour décrire le modèle choisi, les tests de significativité montre que les modèles (3,2,2) et (3,2,0) sont les mieux adaptés
 	\end{itemize}
 \end{frame}
 \begin{frame}{Estimation des paramètres}
@@ -364,29 +365,98 @@
 
 \section{Modélisation de la dépendance angulaire}
 \begin{frame}{Motivations}
-	blabla
+	\begin{itemize}[<+->]
+		\item On veux modéliser la dépendance angulaire au lieu de simplement s'adapter à un jeu de données;
+		\item Plus la résolution angulaire choisie est fine plus la prise en compte de la dépendance angulaire est critique;
+		\item Une famille appropriée (asymptotiquement) est la classe des GEV multivariées;
+		\item Cette classe impose des contraintes sur la dépendance choisie comme des paramétrisations infinies;
+		\item On se restreint sur une sous-famille de modèles paramétriques admissibles, mais dans le cas présent il y a trop de dimension;
+		\item Il faut choisir la classe des processus max-stables introduite par Hahn (1984).
+	\end{itemize}
 \end{frame}
-\begin{frame}{GEV généralisé de Haan}
-	
+\begin{frame}{Représentation de Haan et construction de Smith}
+	\begin{itemize}[<+->]
+		\item Soit $X_\phi$ le vent maximum annuel en la direction $\phi \in [0,2\pi[$
+		\item La loi de $X_\phi$ est une GEV de paramètres $\mu_\phi,\sigma_\phi,k_\phi$
+		\item En utilisant la représentation de de Haan des processus max-stables et en utilisant le procédé de Smith, la distribution conjointe pour $\phi \in \Phi \subset [0,2\pi[$, on obtient
+		$$ P\left\{X_{\phi} \leq x_{\phi}, \forall \phi \in \Phi\right\}=\exp \left[-\int_{0}^{2 \pi} \max _{\phi \in \Phi}\left\{\frac{f_{0}(\xi ; \phi, \zeta)}{\tilde{x}_{\phi}}\right\} d \xi\right]
+		$$
+		\item $\tilde{x}_\phi=\left(1-k_{\phi}\left(x_{\phi}-\mu_{\phi}\right) / \sigma_{\phi}\right)^{-\tfrac{1}{k_{\phi}}}$ (correction pour obtenir une loi de Fréchet canonique)
+		\item $	f_{0}(\xi ; \phi, \zeta)=\frac{1}{2 \pi I_{0}(\zeta)} \exp \{\zeta \cos (\xi-\phi)\}$ (densité de von Mises) modélise la force du vent de direction principale $\xi$ dans la direction $\phi$ selon une répartition $\zeta$.
+		\item La construction de Smith assure que $\{X_\phi,\phi\in\Phi\}$ est un processus max-stable.
+	\end{itemize}
 \end{frame}
-\begin{frame}{Paramètres}
+\begin{frame}{Comment estimer le paramètre $\zeta$}
+	\begin{itemize}[<+->]
+		\item L'estimation par maximum de vraisemblance de $\zeta$ est impossible en partant de la densité;
+		\item La possibilité choisie par les auteurs de de regarder les dépendances deux-à-deux, c-à-d estimer $\zeta$ pour tous les $\Phi_{i,j}=\{\phi_i,\phi_j\}$ avec $\vabs{\phi_i-\phi_j}\leq \pi$ et $\phi_j\geq \phi_i$. Ce qui donne 
+	$$	P\left(X_{\phi_{i}} \leqslant x_{\phi_{i}}, X_{\phi_{j}} \leqslant x_{\phi_{j}}\right)=\exp \left\{-\left(\frac{1}{\tilde{x}_{\phi_{i}}}+\frac{1}{\tilde{x}_{\phi_{j}}}\right) B\left(\frac{\tilde{x}_{\phi_{i}}}{\tilde{x}_{\phi_{i}}+\tilde{x}_{\phi_{j}}}\right)\right\}$$
+	où $B$ est une fonction de dépendance convexe satisfaisant
+	$$ \max(x,1-x) \leq B(x) \leq 1,x\geq 0$$
+	\end{itemize}
 
 \end{frame}
 \section{Estimation des paramètres de la dépendance angulaire}
-\begin{frame}{$\theta$}
+\begin{frame}{Estimation non paramétrique de $\xi$}
+\begin{itemize}[<+->]
+	\item Les données récoltées $X_{\phi_{i}, m}, i=1, \ldots, 36, m=1, \ldots, N$, sont transformées en $\left\{\tilde{X}_{\phi_{i}, m} ; m=1, \cdots N\right\}$ qui suivent alors une loi de Fréchet canonique;
+	\item On a alors 
+	$$P\left(\max \left(\tilde{X}_{\phi_{i}}, \tilde{X}_{\phi_{j}}\right) \leqslant x\right)=\exp (-1 / x)^{\theta_{i, j}},$$
+	où $\theta_{i,j}=2B(\tfrac12)$ est le paramètre de dépendance entre $\phi_i$ et $\phi_j$ à estimer.
+	\item En modifiant un estimateur dû à Pickands, un estimateur sans biais et non paramétrique de $\theta_{i, j}$ 
+	$$\hat{\theta}_{i, j}=\frac{N-1}{\sum_{l=1}^{N} \min \left(\tilde{X}_{\phi_{i}, l}^{-1}, \tilde{X}_{\phi_{j}, l}^{-1}\right)}$$
+\end{itemize}
 
 \end{frame}
-\begin{frame}{$\xi$}
-
-\end{frame}
-\begin{frame}{graphique}
-
-\end{frame}
-\begin{frame}{Conclusion}
+\begin{frame}{Estimation non paramétrique de $\xi$ (2)}
+	\begin{itemize}[<+->]
+		\item Dû à une grande sensibilité de $\hat{\theta}_{i,j}$ à la transformation $X\to \tilde X$, beaucoup d'estimations sortent de $[1,2]$;
+		\item En utilisant la transformation
+	$$	\tilde{X}_{\phi_{i}, m}=-\left[\log \left\{1-\frac{r\left(X_{\phi_{i}, m}\right)}{N+1}\right\}\right]^{-1} ,1\leq i \leq 36, 1\leq m \leq N$$
+	où $r(x)$ désigne est le rang (ie. $r(2)=2$ dans $\{1,2,4,7\}$)
+	\item L'estimateur de $\zeta$ s'obtient alors par une méthode des moindres carrés sur
+	$$\hat\zeta = \sum_{i=1}^{35} \sum_{j=i+1}^{36}\left(\hat{\theta}_{i, j}-\theta_{i, j}^{th}(\zeta)\right)^{2}=1.74$$
+	\end{itemize}
 	
 \end{frame}
 
-
+\begin{frame}{Estimation paramétrique}
+\begin{itemize}[<+->]
+	\item Au lieu d'estimer $\theta_{i,j}$ on estime $\zeta_{i,j}$ pour chaque couple en utilisant la méthode du maximum de vraisemblance;
+	\item Les auteurs trouvent par cette méthode $\zeta=1.74$.
+\end{itemize}
+\end{frame}
+\begin{frame}{}
+\begin{center}
+	\includegraphics[scale=0.33]{fig2_projet}
+\end{center}
+\end{frame}
+\section{Conclusion}
+\begin{frame}{Isotropie}
+\begin{itemize}[<+->]
+	\item Par construction le modèle est isotropique et pour un $\zeta$ donné, la dépendance angulaire détermine complètement le modèle;
+	\item Les données montrent une variabilité inter-quadrant;
+	\item Cependant pour construire un modèle plus performant il faut plus de données. 
+\end{itemize}	
+\end{frame}
+\begin{frame}{}
+	\begin{center}
+		\includegraphics[scale=0.33]{fig3_projet}
+	\end{center}
+\end{frame}
+\begin{frame}{Quantiles}
+	\begin{itemize}[<+->]
+		\item On scinde $[0,2\pi[$ en quatre quadrants;
+		\item On regarde la fonction quantile de 
+			$$ P\left\{X_{\phi} \leqslant x_{\phi} ,\forall \phi \in \Phi\right\}=\exp \left[-\int_{0}^{2 \pi} \max _{\phi \in \Phi}\left\{\frac{f_{0}(\xi ; \phi, \zeta)}{\tilde{x}_{\phi}}\right\} d \xi\right]
+		$$
+	\end{itemize}
+\end{frame}
+\begin{frame}{}
+	\begin{center}
+		\includegraphics[scale=0.5]{fig4_projet}
+	\end{center}
+\end{frame}
 	
 
 			
